@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jQuery Fundamentals</title>
+    <!-- Real world approach: pick one CDN and the local fallback -->
+    <!-- Microsoft CDN 
+    <script
+      type="text/javascript"
+      src="https://ajax.microsoft.com/ajax/jquery/jquery-3.3.1.min.js"
+    ></script> 
+    -->
+    <!-- Google CDN
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    ></script>
+    -->
+    <!-- Local fallback 
+    <script>
+      window.jQuery ||
+        document.write('<script src="../scripts/jquery-3.3.1.js"><\/script>');
+    </script>
+    -->
+  </head>
+  <body>
+    <h1>jQuery Fundamentals</h1>
+    <p id="info">jQuery has not been loaded.</p>
+  </body>
+  <!-- for this courser purposes, use the non minified local copy of jQuery -->
+  <script src="../scripts/jquery-3.3.1.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      // alert("Window loaded!");
+    };
+
+    $(document).ready(function() {
+      // alert("DOM loaded!");
+      $("#info").html("jQuery was loaded and DOM is ready.");
+    });
+  </script>
+</html>
