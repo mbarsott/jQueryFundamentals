@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using jQuery Selectors</title>
+    <style>
+      .BlueDiv {
+        background-color: navy;
+        color: white;
+        width: 200px;
+      }
+      .RedDiv {
+        background-color: red;
+        color: white;
+        width: 200px;
+      }
+      .style1 {
+        width: 100%;
+      }
+    </style>
+    <script src="../scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var imgs = $("img");
+        var divs = $("div");
+        alert(
+          "There are " +
+            imgs.length +
+            " image(s) and " +
+            divs.length +
+            " div(s) in the document. Now the html inside each div:"
+        );
+        divs.css("background-color", "green");
+        divs.each(function() {
+          alert($(this).html());
+        });
+        var divSpans = $("div,span");
+        alert(
+          "There are " + divSpans.length + " divs and spans in the document."
+        );
+        alert("Contents of the form: " + $("#form1").html());
+        $(".BlueDiv").css("border", "2px solid red");
+        $("div.RedDiv").css("border", "2px solid blue");
+        $(".BlueDiv,.RedDiv").css("color", "yellow");
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Using jQuery Selectors</h1>
+    <div id="TestDiv">This is my div test</div>
+    <div>
+      <table>
+        <tr>
+          <td>Cell 1 Row 1</td>
+        </tr>
+        <tr>
+          <td>Cell 1 Row 2</td>
+        </tr>
+        <tr>
+          <td>Cell 1 Row 3</td>
+        </tr>
+        <tr>
+          <td>
+            <table style="width:100%">
+              <tr>
+                <td>Nested Table Cell and Row</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="BlueDiv"><span>Blue div</span></div>
+    <br />
+    <span class="BlueDiv">This is my blue span</span>
+    <br />
+    <div class="RedDiv"><span>Red div</span></div>
+    <br />
+    <span class="RedDiv">This is my red span</span>
+    <p><img src="../images/mbarsott.jpeg" alt="mbarsott" /></p>
+    <form action="submit" id="form1">
+      <table style="width:300px">
+        <tr>
+          <td style="width:30%">First Name</td>
+          <td style="width:70%">
+            <input type="text" name="first-name" id="first-name" />
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input type="text" name="last-name" id="last-name" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Submit" /></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
