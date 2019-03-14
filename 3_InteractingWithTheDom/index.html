@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using jQuery Selectors</title>
+    <style>
+      .BlueDiv {
+        background-color: navy;
+        color: white;
+        width: 200px;
+      }
+      .RedDiv {
+        background-color: red;
+        color: white;
+        width: 200px;
+      }
+      .style1 {
+        width: 100%;
+      }
+    </style>
+    <script src="../scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+      // You can practice your jQuery Selectors at codylindley.com/jqueryselectors/
+      $(document).ready(function() {
+        //#region Using each()
+        var html = "";
+        $("div.BlueDiv,div.RedDiv").each(function(index) {
+          html += "<br />" + index + ": " + $(this).text();
+        });
+        // same thing as:
+        /*
+        $("div.BlueDiv,div.RedDiv").each(function(index, elem) {
+          html += "<br />" + index + ": " + $(elem).text();
+        });
+        */
+        var output = $("#OutputDiv");
+        output.html(html);
+        //#endregion
+        //#region Modifying properties and attributes
+        $('div.BlueDiv, div.RedDiv').each(function(index){
+          this.title="Some title";
+          // same as
+          $(this).attr('title', 'Some Tile 2');
+        });
+        $('div.BlueDiv, div.RedDiv').css('font-size', '20pt');
+        //another way to combine the previous two approaches:
+        $('div.BlueDiv, div.RedDiv').attr(
+          {
+            title: 'Now Title 3',
+            style: 'font-size: 14pt; background-color: yellow; color: black;'
+          }
+        );
+        // even another way, now with jQuery chaining:
+        $('div.BlueDiv, div.RedDiv')
+          .attr(
+            {
+              title: 'And Title 4'
+            }
+          )
+          .css('background-color', 'black')
+          .css('color', 'yellow')
+          .css('font-size', '20pt');
+        //#endregion
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Interacting With The DOM</h1>
+    <div id="OutputDiv"></div>
+    <div>
+      <table id="data-table">
+        <tr>
+          <td>Cell 1 Row 1</td>
+        </tr>
+        <tr>
+          <td>Cell 1 Row 2</td>
+        </tr>
+        <tr>
+          <td>Cell 1 Row 3</td>
+        </tr>
+        <tr>
+          <td>
+            <table style="width:100%">
+              <tr>
+                <td>Nested Table Cell and Row</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="BlueDiv"><span>Blue div</span></div>
+    <br />
+    <span class="BlueDiv">This is my blue span</span>
+    <br />
+    <div class="RedDiv"><span>Red div</span></div>
+    <br />
+    <span class="RedDiv">This is my red span</span>
+    <p><img src="../images/mbarsott.jpeg" alt="mbarsott" /></p>
+    <form action="submit" id="form1">
+      <table style="width:300px">
+        <tr>
+          <td style="width:30%">First Name</td>
+          <td style="width:70%">
+            <input type="text" name="first-name" id="first-name" value="John" />
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input type="text" name="last-name" id="last-name" />
+          </td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>
+            <textarea rows="5" cols="60" name="comments" id="comments">
+Text Area</textarea
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td>
+            <select name="sel" id="sel">
+              <option value="AZ">AZ</option>
+              <option value="CA" selected="true">CA</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Submit" /></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
