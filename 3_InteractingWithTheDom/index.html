@@ -17,6 +17,9 @@
       .style1 {
         width: 100%;
       }
+      .Highlight {
+        background-color: yellow;
+      }
     </style>
     <script src="../scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript">
@@ -61,13 +64,45 @@
           .css('color', 'yellow')
           .css('font-size', '20pt');
         //#endregion
+        //#region Adding and Removing Nodes
+            // modifying the DOM
+            var tcd = $('#TableContainerDiv');
+            tcd.append('<span style="background-color:green">Appended Child 1</span>');
+            tcd.prepend('<span style="background-color:green">Prepended Child 1</span>');
+            $('<span style="background-color:green">Appended Child 2</span>').appendTo(tcd);
+            $('<span style="background-color:green">Prepended Child 2</span>').prependTo(tcd);
+            // wrapping
+            $('span.Foo').wrap('<div class="RedDiv ParentWrapper" />');
+            $('div.ParentWrapper').each(function() {
+              alert($(this).html());
+            });
+            // removing
+            $('div.ParentWrapper').remove();
+        //#endregion
+        //#region Modifying Styles
+        $('span.RedDiv').css({
+          'background-color': 'purple',
+          'color': 'white',
+          'font-size': '20pt'
+        }).text('Changed color');
+        //#endregion
+        //#region Modifying Classes
+          // Class functions
+          // $('input[type="text"]').addClass('Highlight');
+          // $('#last-name').removeClass('Highlight');
+          // removes all classes from the elements
+          // $('#last-name').removeClass();
+        //#endregion
       });
+      function FocusBlur(e) {
+        $(e).toggleClass('Highlight');
+      }
     </script>
   </head>
   <body>
     <h1>Interacting With The DOM</h1>
     <div id="OutputDiv"></div>
-    <div>
+    <div id="TableContainerDiv" title="Contains Table">
       <table id="data-table">
         <tr>
           <td>Cell 1 Row 1</td>
@@ -93,6 +128,9 @@
     <br />
     <span class="BlueDiv">This is my blue span</span>
     <br />
+    <span class="Foo">Span 1</span>
+    <span class="Foo">Span 2</span>
+    <span id="Span3" class="Foo">Span 3</span>
     <div class="RedDiv"><span>Red div</span></div>
     <br />
     <span class="RedDiv">This is my red span</span>
@@ -102,19 +140,19 @@
         <tr>
           <td style="width:30%">First Name</td>
           <td style="width:70%">
-            <input type="text" name="first-name" id="first-name" value="John" />
+            <input type="text" name="first-name" id="first-name" value="John" onfocus="FocusBlur(this)" onblur="FocusBlur(this)" />
           </td>
         </tr>
         <tr>
           <td>Last Name</td>
           <td>
-            <input type="text" name="last-name" id="last-name" />
+            <input type="text" name="last-name" id="last-name" onfocus="FocusBlur(this)" onblur="FocusBlur(this)"/>
           </td>
         </tr>
         <tr>
           <td>Comments</td>
           <td>
-            <textarea rows="5" cols="60" name="comments" id="comments">
+            <textarea rows="5" cols="60" name="comments" id="comments" onfocus="FocusBlur(this)" onblur="FocusBlur(this)">
 Text Area</textarea
             >
           </td>
@@ -122,7 +160,7 @@ Text Area</textarea
         <tr>
           <td>State</td>
           <td>
-            <select name="sel" id="sel">
+            <select name="sel" id="sel" onfocus="FocusBlur(this)" onblur="FocusBlur(this)">
               <option value="AZ">AZ</option>
               <option value="CA" selected="true">CA</option>
             </select>
