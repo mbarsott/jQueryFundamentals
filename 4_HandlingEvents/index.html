@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Handling Events</title>
+    <style>
+      .BlueDiv {
+        background-color: navy;
+        color: white;
+        width: 200px;
+      }
+      .RedDiv {
+        background-color: red;
+        color: white;
+        width: 200px;
+      }
+      .style1 {
+        width: 100%;
+      }
+      .Highlight {
+        background-color: yellow;
+      }
+    </style>
+    <script src="../scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript"></script>
+  </head>
+  <body>
+    <h1>Handling Events</h1>
+    <form action="submit" id="form1">
+      <table style="width:300px">
+        <tr>
+          <td style="width:30%">First Name</td>
+          <td style="width:70%">
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+              value="John"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>
+            <textarea
+              rows="5"
+              cols="60"
+              name="comments"
+              id="comments"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            >
+              Text Area
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td>
+            <select
+              name="sel"
+              id="sel"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            >
+              <option value="AZ">AZ</option>
+              <option value="CA" selected="true">CA</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input id="submit-button" type="button" value="Submit" /></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </form>
+    <script type="text/javascript">
+      //Handle events the old fashion way
+      var button = document.getElementById("submit-button");
+      if (document.addEventListener) {
+        button.addEventListener(
+          "click",
+          function() {
+            alert("Clicked Button");
+          },
+          false
+        );
+      } else {
+        button.attachEvent("onclick", function() {
+          alert("Clicked IE Button");
+        });
+      }
+    </script>
+  </body>
+</html>

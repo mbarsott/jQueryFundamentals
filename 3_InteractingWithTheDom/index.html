@@ -40,62 +40,68 @@
         output.html(html);
         //#endregion
         //#region Modifying properties and attributes
-        $('div.BlueDiv, div.RedDiv').each(function(index){
-          this.title="Some title";
+        $("div.BlueDiv, div.RedDiv").each(function(index) {
+          this.title = "Some title";
           // same as (just a different value so you can see it a different result)
-          $(this).attr('title', 'Some Tile 2');
+          $(this).attr("title", "Some Tile 2");
         });
-        $('div.BlueDiv, div.RedDiv').css('font-size', '20pt');
+        $("div.BlueDiv, div.RedDiv").css("font-size", "20pt");
         //another way to combine the previous two approaches:
-        $('div.BlueDiv, div.RedDiv').attr(
-          {
-            title: 'Now Title 3',
-            style: 'font-size: 14pt; background-color: yellow; color: black;'
-          }
-        );
+        $("div.BlueDiv, div.RedDiv").attr({
+          title: "Now Title 3",
+          style: "font-size: 14pt; background-color: yellow; color: black;"
+        });
         // even another way, now with jQuery chaining:
-        $('div.BlueDiv, div.RedDiv')
-          .attr(
-            {
-              title: 'And Title 4'
-            }
-          )
-          .css('background-color', 'black')
-          .css('color', 'yellow')
-          .css('font-size', '20pt');
+        $("div.BlueDiv, div.RedDiv")
+          .attr({
+            title: "And Title 4"
+          })
+          .css("background-color", "black")
+          .css("color", "yellow")
+          .css("font-size", "20pt");
         //#endregion
         //#region Adding and Removing Nodes
-            // modifying the DOM
-            var tcd = $('#TableContainerDiv');
-            tcd.append('<span style="background-color:green">Appended Child 1</span>');
-            tcd.prepend('<span style="background-color:green">Prepended Child 1</span>');
-            $('<span style="background-color:green">Appended Child 2</span>').appendTo(tcd);
-            $('<span style="background-color:green">Prepended Child 2</span>').prependTo(tcd);
-            // wrapping
-            $('span.Foo').wrap('<div class="RedDiv ParentWrapper" />');
-            $('div.ParentWrapper').each(function() {
-              alert($(this).html());
-            });
-            // removing
-            $('div.ParentWrapper').remove();
+        // modifying the DOM
+        var tcd = $("#TableContainerDiv");
+        tcd.append(
+          '<span style="background-color:green">Appended Child 1</span>'
+        );
+        tcd.prepend(
+          '<span style="background-color:green">Prepended Child 1</span>'
+        );
+        $(
+          '<span style="background-color:green">Appended Child 2</span>'
+        ).appendTo(tcd);
+        $(
+          '<span style="background-color:green">Prepended Child 2</span>'
+        ).prependTo(tcd);
+        // wrapping
+        $("span.Foo").wrap('<div class="RedDiv ParentWrapper" />');
+        $("div.ParentWrapper").each(function() {
+          alert($(this).html());
+        });
+        // removing
+        $("div.ParentWrapper").remove();
         //#endregion
         //#region Modifying Styles
-        $('span.RedDiv').css({
-          'background-color': 'purple',
-          'color': 'white',
-          'font-size': '20pt'
-        }).text('Changed color');
+        $("span.RedDiv")
+          .css({
+            "background-color": "purple",
+            color: "white",
+            "font-size": "20pt"
+          })
+          .text("Changed color");
         //#endregion
         //#region Modifying Classes
-          // Class functions
-          // $('input[type="text"]').addClass('Highlight');
-          // $('#last-name').removeClass('Highlight');
-          // removes all classes from the elements
-          // $('#last-name').removeClass();
+        // Class functions
+        // $('input[type="text"]').addClass('Highlight');
+        // $('#last-name').removeClass('Highlight');
+        // removes all classes from the elements
+        // $('#last-name').removeClass();
         //#endregion
       });
       function FocusBlur(e) {
-        $(e).toggleClass('Highlight');
+        $(e).toggleClass("Highlight");
       }
     </script>
   </head>
@@ -140,27 +146,52 @@
         <tr>
           <td style="width:30%">First Name</td>
           <td style="width:70%">
-            <input type="text" name="first-name" id="first-name" value="John" onfocus="FocusBlur(this)" onblur="FocusBlur(this)" />
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+              value="John"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            />
           </td>
         </tr>
         <tr>
           <td>Last Name</td>
           <td>
-            <input type="text" name="last-name" id="last-name" onfocus="FocusBlur(this)" onblur="FocusBlur(this)"/>
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            />
           </td>
         </tr>
         <tr>
           <td>Comments</td>
           <td>
-            <textarea rows="5" cols="60" name="comments" id="comments" onfocus="FocusBlur(this)" onblur="FocusBlur(this)">
-Text Area</textarea
+            <textarea
+              rows="5"
+              cols="60"
+              name="comments"
+              id="comments"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
             >
+              Text Area
+            </textarea>
           </td>
         </tr>
         <tr>
           <td>State</td>
           <td>
-            <select name="sel" id="sel" onfocus="FocusBlur(this)" onblur="FocusBlur(this)">
+            <select
+              name="sel"
+              id="sel"
+              onfocus="FocusBlur(this)"
+              onblur="FocusBlur(this)"
+            >
               <option value="AZ">AZ</option>
               <option value="CA" selected="true">CA</option>
             </select>
