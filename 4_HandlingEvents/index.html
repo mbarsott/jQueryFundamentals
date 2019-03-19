@@ -22,7 +22,26 @@
       }
     </style>
     <script src="../scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        WireEvents();
+      });
+      function WireEvents() {
+        $("#submit-button").click(function() {
+          let value = $("#first-name").val() + " " + $("#last-name").val();
+          $("#div-output").text(value);
+        });
+
+        $(".my-input").change(function() {
+          alert($(this).val());
+          $(this).addClass("Highlight");
+        });
+      }
+      // hooking using the onclick attribute on the tag
+      function SubmitButtonClick() {
+        alert("Clicked Button using a tag attribute");
+      }
+    </script>
   </head>
   <body>
     <h1>Handling Events</h1>
@@ -31,25 +50,17 @@
         <tr>
           <td style="width:30%">First Name</td>
           <td style="width:70%">
-            <input
-              type="text"
-              name="first-name"
-              id="first-name"
-              value="John"
-              onfocus="FocusBlur(this)"
-              onblur="FocusBlur(this)"
-            />
+            <input type="text" name="first-name" id="first-name" value="John" />
           </td>
         </tr>
         <tr>
           <td>Last Name</td>
           <td>
             <input
+              class="my-input"
               type="text"
               name="last-name"
               id="last-name"
-              onfocus="FocusBlur(this)"
-              onblur="FocusBlur(this)"
             />
           </td>
         </tr>
@@ -57,12 +68,11 @@
           <td>Comments</td>
           <td>
             <textarea
+              class="my-input"
               rows="5"
               cols="60"
               name="comments"
               id="comments"
-              onfocus="FocusBlur(this)"
-              onblur="FocusBlur(this)"
             >
               Text Area
             </textarea>
@@ -71,25 +81,31 @@
         <tr>
           <td>State</td>
           <td>
-            <select
-              name="sel"
-              id="sel"
-              onfocus="FocusBlur(this)"
-              onblur="FocusBlur(this)"
-            >
+            <select class="my-input" name="state-select" id="state-select">
               <option value="AZ">AZ</option>
               <option value="CA" selected="true">CA</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td><input id="submit-button" type="button" value="Submit" /></td>
-          <td>&nbsp;</td>
+          <td>
+            <input id="submit-button" type="button" value="Submit" />
+            <!--input
+              id="submit-button"
+              type="button"
+              value="Submit"
+              onclick="SubmitButtonClick()"
+            /-->
+          </td>
+          <td>
+            <div id="div-output"></div>
+          </td>
         </tr>
       </table>
     </form>
     <script type="text/javascript">
       //Handle events the old fashion way
+      /*
       var button = document.getElementById("submit-button");
       if (document.addEventListener) {
         button.addEventListener(
@@ -104,6 +120,7 @@
           alert("Clicked IE Button");
         });
       }
+      */
     </script>
   </body>
 </html>
